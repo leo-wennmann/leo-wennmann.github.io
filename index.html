@@ -1,7 +1,1174 @@
 <!DOCTYPE html>
-<html>
-<body>
-  <h1>Hello World!</h1>
-  <p>My site is hosted on GitHub Pages.</p>
-</body>
+<html lang="en">
+
+<head>
+    
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/x-icon" href="/static/icons/favicon-v2.ico" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+	<link rel="manifest" href="/static/icons/site.webmanifest">
+	<link rel="stylesheet" type="text/css" href="/static/css/tailwind.css">
+	<title>Leo Wennmann</title>
+</head>
+
+<body class="min-h-screen text-black flex flex-col flex-nowrap">
+    
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<style>
+        #graph-container {
+            width: 100%;  /* Scale to 95% of viewport width */
+            height: auto; /* Scale to 95% of viewport height */
+			aspect-ratio: 1 / 1;
+            max-width: 1000px; /* Optional: caps the size so it doesn't get too huge */
+            max-height: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+			margin: 0 auto;
+        }
+
+        .node text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            fill: #333;
+            cursor: default;
+            letter-spacing: 0.5px;
+            pointer-events: none; /* Text won't interfere with mouse events */
+        }
+
+        .link {
+            fill: none;
+            stroke: #8D9DB6;
+            stroke-opacity: 0.5;
+            pointer-events: none;
+        }
+
+		svg {
+			display: block;
+			margin: 0 auto;
+			max-width: 100%; 
+			height: auto;
+			overflow: visible;
+		}
+    </style>
+	<header class="mb-4">
+		<div class="bg-primary text-white pt-8 pb-2">
+			<div class="max-w-3xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-end gap-8">
+				<div class="text-center md:text-left md:flex-grow-1 md:justify-end">
+					<h1 class="text-3xl font-bold mb-1">Leo Wennmann</h1>
+					<p class="mb-2 text-white">PhD Student</p>
+				</div>
+				<img class="h-56 w-56 object-cover object-right md:w-auto rounded-3xl order-first md:order-last md:translate-y-[72px] md:mt-[-72px] shadow shadow-lg" alt="" src="/static/images/portrait.jpg" />
+			</div>
+		</div>
+		<div class="text-primary pt-3">
+			<div class="max-w-3xl mx-auto px-6 flex flex-row justify-center md:justify-start items-center gap-2">
+				<a href="mailto:wennmann@imada.sdu.dk" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cXkj0up="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+<svg viewBox="0 0 4445 4445" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" 
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-c2RcdMq="">
+    <g transform="matrix(5.55556,0,0,5.55556,0,0)">
+        <path d="M690.322,121.817C690.322,121.817 755.077,96.567 749.68,157.888C747.882,183.138 731.693,271.513 719.102,367.103L675.932,650.265C675.932,650.265 672.335,691.747 639.957,698.962C607.578,706.175 559.013,673.712 550.018,666.497C542.823,661.087 415.113,579.925 370.143,540.247C357.552,529.425 343.162,507.782 371.942,482.532L560.812,302.175C582.397,280.532 603.982,230.032 514.043,291.353L262.218,462.693C262.218,462.693 233.438,480.728 179.477,464.497L62.557,428.425C62.557,428.425 19.387,401.372 93.136,374.317C273.012,289.548 494.258,202.977 690.322,121.817Z" style="fill-rule:nonzero;"/>
+    </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+				<a href="https://dblp.uni-trier.de/pid/371/0997.html" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cfUE11F="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-cpshp9E="">
+    <path
+        d="M710,486L628.333,180.667C628.333,180.667 623.333,161 604.333,169.667L417.667,256.333L446.333,363L482.667,499L483,501C484.667,516.667 469.333,527.333 469.333,527.333L406.667,556.333L423.333,619.333L424.667,622.667C427,628.333 434,642.667 451.667,653L683.333,795.333C683.333,795.333 706,809 700.667,789.667L634.667,543L696.667,514.333C696.667,514.333 715.333,505.667 710,486ZM458.667,489L458.333,487L420.667,346.333L398.667,264.667L376.333,181.667L376.333,180.333C376.333,180.333 371,160.667 348.333,147L116.667,4.667C116.667,4.667 94,-9 99.333,10.333L165.667,257.667L103.333,286.667C103.333,286.667 84.667,295.333 90,315L171.667,620.333C171.667,620.333 177,640 195.667,631.333L401.333,535.667L444.667,515.333C444.667,515.333 462,507.333 458.667,489Z"
+        style="fill-rule:nonzero;" />
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+				<a href="https://scholar.google.com/citations?user=mLB-pvUAAAAJ&amp;hl=en&amp;authuser=2" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cQH8mnx="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+
+
+
+
+<svg viewBox="0 0 29634 29634" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-c1fWHTv="">
+    <g transform="matrix(5.55556,0,0,5.55556,0,0)">
+            <g transform="matrix(0.613445,0.766586,-1.88226,1.50624,4653.01,-2365.59)">
+                <path d="M3084.38,2059.81L618,1256L598.802,2666.48L2191.82,2524.57L3084.38,2059.81Z" style="fill-rule:nonzero;fill-opacity:0.95;"/>
+            </g>
+            <g transform="matrix(-0.613445,0.766586,1.88226,1.50624,680.659,-2365.59)">
+                <path d="M3084.38,2059.81L618,1256L598.802,2666.48L2191.82,2524.57L3084.38,2059.81Z" style="fill-rule:nonzero;"/>
+            </g>
+            <g transform="matrix(1.10216,0,0,1.15311,-474.947,-741.35)">
+                <ellipse cx="2849.5" cy="3895" rx="1409.5" ry="1352" style="fill-rule:nonzero;fill-opacity:0.85;"/>
+            </g>
+    </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+			</div>
+		</div>
+	</header>
+
+    
+	<main class="flex-1">
+		<div class="max-w-3xl mx-auto px-6 py-12">
+			<section class="mb-12" data-djc-id-cPqcgnM="">
+    <h1 class="mb-3 inline-block text-xl text-primary font-bold uppercase leading-tight">About Me</h1>
+    
+				<div class="prose leading-normal font-medium max-w-none">
+					<p>
+						I am a PhD student with a broad interest in theoretical computer science, specifically in fine-grained algorithm design (and complexity) and applications of randomized rounding and linear programming techniques.
+						Currently, I am supervised by Lars Rohwedder at the University of Southern Denmark (SDU).
+					</p>
+					<p>
+						I am a strong advocate for making the TCS community a safe and inclusive space for everyone.
+						If you need someone to listen or want to have a respectful conversation about the fact that there is still a long way to go, please reach out or come talk to me.
+					</p>
+					<p style="line-height: 1;">
+						In my personal life, there is a 99% chance that:
+						<ul class="marker:text-primary mt-3 [&>li]:mt-0.3 [&>li]:mb-0" style="margin-top: -8px;">
+							<li>You will find on my mat <span class="text-primary font-medium">––</span> doing yoga, functional strength training, HIIT or any combination thereof <span class="text-primary font-medium">––</span> or outside biking or going for a walk; more recently, I also started bouldering.</li>
+							<li>I am listening to music <span class="text-primary font-medium">––</span> I am always counting down the days to the next concert or festival day.</li>
+						</ul>
+					</p>
+				</div>
+			
+</section>
+			<section class="mb-12" data-djc-id-cztDABL="">
+    <h1 class="mb-3 inline-block text-xl text-primary font-bold uppercase leading-tight">Teaching</h1>
+    
+				<div class="prose leading-normal font-medium max-w-none">
+					I am very passionate about teaching and enjoyed being a TA for various courses.
+					<ul class="marker:text-primary mt-3 [&>li]:mt-0.5 [&>li]:mb-0">
+						<li>Discrete Math <span class="text-primary font-medium">––</span> <span class="text-sm">SDU</span>
+						</li>
+						<li>Algorithms and Data Structures <span class="text-primary font-medium">––</span> <span class="text-sm">KU, FU, SDU</span></li>
+						<li>
+							Introduction to Programming <span class="text-primary font-medium">––</span> <span class="text-sm">KU, MU</span>
+						</li>
+						<li>
+							Management of Operations and Product Development <span class="text-primary font-medium">––</span> <span class="text-sm">MU</span>
+						</li>
+						<li>Seminar: Mathematics and Computation <span class="text-primary font-medium">––</span> <span class="text-sm">FU</span> </li>
+						<li>Optimization <span class="text-primary font-medium">––</span> <span class="text-sm">SU</span></li>
+						<li>
+							Implementation of Fundamental Numerical Methods <span class="text-primary font-medium">––</span> <span class="text-sm">KU</span>
+						</li>
+						<li>
+							Computer Science as Minor Subject <span class="text-primary font-medium">––</span> <span class="text-sm">KU</span>
+						</li>
+					</ul>
+
+					<p class="text-sm">
+                    * Frankfurt | Kiel | Maastricht | Saarland  University
+                </p>
+				</div>
+			
+</section>
+			<section class="mb-12" data-djc-id-cdmoI61="">
+    <h1 class="mb-3 inline-block text-xl text-primary font-bold uppercase leading-tight">Supervision</h1>
+    
+				<div class="prose leading-normal font-medium max-w-none">
+					I loved learning from co-supervising the following talented students.
+					<ul class="marker:text-primary mt-3 [&>li]:mt-0.5 [&>li]:mb-0">
+						<li>
+                        Marius Hagemann <span class="text-primary font-medium">––</span>
+                        Block-Structured Mixed Integer Linear Programs
+                    </li>
+                    <li>
+                        Lars Huth <span class="text-primary font-medium">––</span> Analyzing MILP Security Bound Modeling for Linear and Differential Cryptanalysis
+                    </li>
+                    <li>
+                        Melvin Kallmayer <span class="text-primary font-medium">––</span> ​Experimental Evaluation of a Simpler Algorithm for Trimmed Multipoint Evaluation in Rust
+                    </li>
+                     <li>
+                        Sofia Lohr <span class="text-primary font-medium">––</span> Analyzing MILPs for Linear and Differential Cryptanalysis
+                    </li>
+                    <li>
+                        Jonas Strauch <span class="text-primary font-medium">––</span> A Mixed-Integer Analogue to Carathéodory's Theorem
+                    </li>
+                    <li>
+                        PJ van Mill <span class="text-primary font-medium">––</span> Simple Online Algorithms for Maximum-Flowtime Scheduling on Related Machines
+                    </li>
+					</ul>
+				</div>
+			
+</section>
+			<section class="mb-12" data-djc-id-cDd3g5c="">
+    <h1 class="mb-3 inline-block text-xl text-primary font-bold uppercase leading-tight">Co-authors</h1>
+    
+				<div style="display: flex; justify-content: center; align-items: center; margin-bottom: -30px;">
+					<div id="graph" style="width: 90%; max-width: 1000px;"></div>
+				</div>
+				<script>
+					// --- CONFIGURATION ---
+					const highlightAuthor = "Leo Wennmann";
+					const highlightColor = "#32415F";
+					const edgeColor = "#8D9DB6";
+
+					const rawLinks = [
+						// Minimizing Tardy Processing Time on a Single Machine in Near-Linear Time
+						{ source: "Leo Wennmann", target: "Nick Fischer" },
+						// Solving Polynomial Equations Over Finite Fields
+						{ source: "Leo Wennmann", target: "Melvin Kallmayer" },
+						{ source: "Leo Wennmann", target: "Anselm Haak" },
+						{ source: "Leo Wennmann", target: "Holger Dell" },
+						{ source: "Melvin Kallmayer", target: "Holger Dell" },
+						{ source: "Melvin Kallmayer", target: "Anselm Haak" },
+						// Cost Preserving Dependent Rounding for Allocation Problems
+						{ source: "Leo Wennmann", target: "Lars Rohwedder" },
+						{ source: "Leo Wennmann", target: "Arman Rouhani" },
+						{ source: "Lars Rohwedder", target: "Arman Rouhani" },
+						// A Simple Algorithm for Trimmed Multipoint Evaluation
+						{ source: "Leo Wennmann", target: "Nick Fischer" },
+						{ source: "Leo Wennmann", target: "Melvin Kallmayer" },
+						{ source: "Melvin Kallmayer", target: "Nick Fischer" },
+						// Non-Additive Discrepancy: Coverage Functions in a Beck-Fiala Setting
+						{ source: "Leo Wennmann", target: "Tatiana Rocha Avila" },
+						{ source: "Leo Wennmann", target: "Lars Rohwedder" },
+						{ source: "Tatiana Rocha Avila", target: "Lars Rohwedder" },
+						// Distributed Santa Claus via Global Rounding
+						{ source: "Leo Wennmann", target: "Malte Baumecker" },
+						{ source: "Leo Wennmann", target: "Yannic Maus" },
+						{ source: "Leo Wennmann", target: "Florian Schager" },
+						{ source: "Leo Wennmann", target: "Tijn de Vos" },
+						{ source: "Tijn de Vos", target: "Malte Baumecker" },
+						{ source: "Tijn de Vos", target: "Yannic Maus" },
+						{ source: "Tijn de Vos", target: "Florian Schager" },
+						{ source: "Malte Baumecker", target: "Florian Schager" },
+						{ source: "Malte Baumecker", target: "Yannic Maus" },
+						{ source: "Yannic Maus", target: "Florian Schager" },
+					];
+
+					let nodesData = [
+						{ id: "Holger Dell" }, { id: "Melvin Kallmayer" }, { id: "Malte Baumecker" },
+						{ id: "Yannic Maus" }, { id: "Leo Wennmann" }, { id: "Nick Fischer" },
+						{ id: "Arman Rouhani" }, { id: "Tatiana Rocha Avila" }, { id: "Anselm Haak" },
+						{ id: "Lars Rohwedder" }, { id: "Florian Schager" }, { id: "Tijn de Vos" }
+					];
+
+					// 1. Sort by Last Name
+					nodesData.sort((a, b) => {
+						const nameA = a.id.split(' ').pop().toLowerCase();
+						const nameB = b.id.split(' ').pop().toLowerCase();
+						return nameA.localeCompare(nameB);
+					});
+
+					// 2. Count Weight
+					const counts = {};
+					rawLinks.forEach(link => {
+						const key = [link.source, link.target].sort().join("|");
+						counts[key] = (counts[key] || 0) + 1;
+					});
+
+					const linksData = Object.keys(counts).map(key => {
+						const [source, target] = key.split("|");
+						return { source, target, weight: counts[key] };
+					});
+
+					// 3. Setup SVG with ViewBox for Responsiveness
+					const baseSize = 1000;
+					const radius = 260; 
+
+					const svg = d3.select("#graph").append("svg")
+						.attr("viewBox", `0 0 ${baseSize} ${baseSize}`)
+						.attr("preserveAspectRatio", "xMidYMid meet")
+						.append("g")
+						.attr("transform", `translate(${baseSize / 2},${baseSize / 2})`);
+
+					// 4. Calculate Positions
+					const angleStep = (2 * Math.PI) / nodesData.length;
+					nodesData.forEach((d, i) => {
+						d.angle = i * angleStep; 
+						d.x = Math.cos(d.angle) * radius;
+						d.y = Math.sin(d.angle) * radius;
+					});
+
+					// 5. Draw Links
+					const lineGenerator = d3.line()
+						.x(d => d.x)
+						.y(d => d.y)
+						.curve(d3.curveBundle.beta(0.85));
+
+					svg.selectAll(".link")
+						.data(linksData)
+						.enter().append("path")
+						.attr("class", "link")
+						.attr("stroke", edgeColor)
+						.attr("stroke-width", d => d.weight * 2) 
+						.attr("d", d => {
+							const source = nodesData.find(n => n.id === d.source);
+							const target = nodesData.find(n => n.id === d.target);
+							return lineGenerator([source, {x: 0, y: 0}, target]);
+						});
+
+					// 6. Draw Nodes (Text Orientation Fix Included)
+					const node = svg.selectAll(".node")
+						.data(nodesData)
+						.enter().append("g")
+						.attr("class", "node")
+						.attr("transform", d => `translate(${d.x}, ${d.y})`);
+
+					node.append("text")
+						.attr("dy", "0.31em")
+						.text(d => d.id)
+						.attr("text-anchor", d => {
+							return (d.angle > Math.PI / 2 && d.angle < 1.5 * Math.PI) ? "end" : "start";
+						})
+						.attr("transform", d => {
+							let rotation = (d.angle * 180 / Math.PI);
+							if (d.angle > Math.PI / 2 && d.angle < 1.5 * Math.PI) rotation -= 180;
+							return `rotate(${rotation})`;
+						})
+						.attr("x", d => (d.angle > Math.PI / 2 && d.angle < 1.5 * Math.PI) ? -15 : 15)
+						.style("fill", d => d.id === highlightAuthor ? highlightColor : "#333")
+						.style("font-weight", d => d.id === highlightAuthor ? "700" : "500");
+
+				</script>
+			
+</section>
+			<section class="mb-12" data-djc-id-cQ2GKnS="">
+    <h1 class="mb-3 inline-block text-xl text-primary font-bold uppercase leading-tight">Publications</h1>
+    
+			<div class="space-y-6">
+				
+				
+					<div class="flex items-center gap-4 mb-5">
+						<span class="text-xs font-semibold tracking-widest text-primary uppercase">
+							2026
+						</span>
+					</div>
+					
+						<div class="rounded-2xl border border-primary border-[1.5px] overflow-hidden" data-djc-id-cxzDzB4="">
+    
+    <h2 class="mx-3 mt-3 mb-0.5 text-md font-medium leading-tight">Distributed Santa Claus via Global Rounding</h2>
+    <p class="mx-3 mb-3 text-sm font-medium">Tijn de Vos, Leo Wennmann, Malte Baumecker, Yannic Maus, Florian Schager</p>
+    
+        <div class="mx-3 mb-3 flex flex-row flex-wrap items-center gap-2">
+            
+                
+                    <a href="https://arxiv.org/abs/2604.27983" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cnTL61x="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+
+
+<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-ciLfKKI="">
+    <g transform="matrix(1,0,0,1,1,1)">
+        <path
+            d="M3.842,0C3.442,0 3.078,0.24 2.92,0.608C2.767,0.977 2.876,1.235 3.214,1.719L10.133,10.079L9.11,11.185C8.738,11.583 8.739,12.211 9.113,12.608L10.343,13.921L4.903,20.365C4.623,20.664 4.45,21.188 4.606,21.564C4.766,21.951 5.146,22.203 5.565,22.199C5.833,22.192 6.086,22.068 6.254,21.859L12.037,15.733L19.527,23.738C19.704,23.922 19.955,24.018 20.211,23.997C20.6,23.991 20.949,23.747 21.088,23.383C21.246,23.007 21.071,22.633 20.782,22.243L13.73,13.901L14.794,12.771C15.141,12.405 15.145,11.825 14.803,11.455L4.634,0.464C4.634,0.464 4.26,0.01 3.866,0.001L3.842,0ZM3.842,0.272L3.859,0.272C4.077,0.277 4.346,0.544 4.423,0.636L4.428,0.642L4.433,0.647L14.602,11.638C14.848,11.904 14.845,12.32 14.595,12.583L13.529,13.716L12.031,11.944L3.431,1.554C3.103,1.082 3.079,0.935 3.172,0.713C3.287,0.446 3.552,0.272 3.842,0.272L3.842,0.272ZM18.183,1.842C17.941,1.828 17.703,1.916 17.528,2.084L11.832,8.242L13.526,10.074L18.835,3.56C19.16,3.127 19.314,2.9 19.16,2.531C18.994,2.133 18.614,1.865 18.183,1.842L18.183,1.842ZM10.528,14.124L11.846,15.538L6.06,21.667C5.942,21.824 5.76,21.92 5.564,21.927C5.256,21.932 4.975,21.746 4.858,21.461C4.746,21.192 4.894,20.774 5.102,20.552L5.107,20.547L5.112,20.541L10.528,14.124Z"
+            style="fill-rule:nonzero;stroke-width:0.5px;" />
+    </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+            
+        </div>
+    
+</div>
+					
+						<div class="rounded-2xl border border-primary border-[1.5px] overflow-hidden" data-djc-id-ct8GoiZ="">
+    
+    <h2 class="mx-3 mt-3 mb-0.5 text-md font-medium leading-tight">Non-Additive Discrepancy: Coverage Functions in a Beck-Fiala Setting</h2>
+    <p class="mx-3 mb-3 text-sm font-medium">Tatiana Rocha Avila, Lars Rohwedder, Leo Wennmann</p>
+    
+        <div class="mx-3 mb-3 flex flex-row flex-wrap items-center gap-2">
+            
+                
+                    <a href="https://arxiv.org/abs/2602.09948" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cvvSWFw="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+
+
+<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-crM2JMs="">
+    <g transform="matrix(1,0,0,1,1,1)">
+        <path
+            d="M3.842,0C3.442,0 3.078,0.24 2.92,0.608C2.767,0.977 2.876,1.235 3.214,1.719L10.133,10.079L9.11,11.185C8.738,11.583 8.739,12.211 9.113,12.608L10.343,13.921L4.903,20.365C4.623,20.664 4.45,21.188 4.606,21.564C4.766,21.951 5.146,22.203 5.565,22.199C5.833,22.192 6.086,22.068 6.254,21.859L12.037,15.733L19.527,23.738C19.704,23.922 19.955,24.018 20.211,23.997C20.6,23.991 20.949,23.747 21.088,23.383C21.246,23.007 21.071,22.633 20.782,22.243L13.73,13.901L14.794,12.771C15.141,12.405 15.145,11.825 14.803,11.455L4.634,0.464C4.634,0.464 4.26,0.01 3.866,0.001L3.842,0ZM3.842,0.272L3.859,0.272C4.077,0.277 4.346,0.544 4.423,0.636L4.428,0.642L4.433,0.647L14.602,11.638C14.848,11.904 14.845,12.32 14.595,12.583L13.529,13.716L12.031,11.944L3.431,1.554C3.103,1.082 3.079,0.935 3.172,0.713C3.287,0.446 3.552,0.272 3.842,0.272L3.842,0.272ZM18.183,1.842C17.941,1.828 17.703,1.916 17.528,2.084L11.832,8.242L13.526,10.074L18.835,3.56C19.16,3.127 19.314,2.9 19.16,2.531C18.994,2.133 18.614,1.865 18.183,1.842L18.183,1.842ZM10.528,14.124L11.846,15.538L6.06,21.667C5.942,21.824 5.76,21.92 5.564,21.927C5.256,21.932 4.975,21.746 4.858,21.461C4.746,21.192 4.894,20.774 5.102,20.552L5.107,20.547L5.112,20.541L10.528,14.124Z"
+            style="fill-rule:nonzero;stroke-width:0.5px;" />
+    </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+            
+        </div>
+    
+</div>
+					
+				
+					<div class="flex items-center gap-4 mb-5">
+						<span class="text-xs font-semibold tracking-widest text-primary uppercase">
+							2025
+						</span>
+					</div>
+					
+						<div class="rounded-2xl border border-primary border-[1.5px] overflow-hidden" data-djc-id-cQZuzmn="">
+    
+        <div class="float-right ml-3 mb-3 flex flex-col gap-0.5 items-end">
+            
+                <div class=" bg-primary  p-2 pl-2.5 text-white text-sm font-bold rounded-bl-2xl w-fit">ESA 2025</div>
+            
+        </div>
+    
+    <h2 class="mx-3 mt-3 mb-0.5 text-md font-medium leading-tight">A Simple Algorithm for Trimmed Multipoint Evaluation</h2>
+    <p class="mx-3 mb-3 text-sm font-medium">Nick Fischer, Melvin Kallmayer, Leo Wennmann</p>
+    
+        <div class="mx-3 mb-3 flex flex-row flex-wrap items-center gap-2">
+            
+                
+                    <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ESA.2025.89" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cHA3po2="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-djc-id-cbJLnk9="">
+    <path stroke-linecap="round" stroke-linejoin="round"
+        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+                
+                    <a href="https://arxiv.org/abs/2507.00196" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cT7gnvV="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+
+
+<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-csiEx3K="">
+    <g transform="matrix(1,0,0,1,1,1)">
+        <path
+            d="M3.842,0C3.442,0 3.078,0.24 2.92,0.608C2.767,0.977 2.876,1.235 3.214,1.719L10.133,10.079L9.11,11.185C8.738,11.583 8.739,12.211 9.113,12.608L10.343,13.921L4.903,20.365C4.623,20.664 4.45,21.188 4.606,21.564C4.766,21.951 5.146,22.203 5.565,22.199C5.833,22.192 6.086,22.068 6.254,21.859L12.037,15.733L19.527,23.738C19.704,23.922 19.955,24.018 20.211,23.997C20.6,23.991 20.949,23.747 21.088,23.383C21.246,23.007 21.071,22.633 20.782,22.243L13.73,13.901L14.794,12.771C15.141,12.405 15.145,11.825 14.803,11.455L4.634,0.464C4.634,0.464 4.26,0.01 3.866,0.001L3.842,0ZM3.842,0.272L3.859,0.272C4.077,0.277 4.346,0.544 4.423,0.636L4.428,0.642L4.433,0.647L14.602,11.638C14.848,11.904 14.845,12.32 14.595,12.583L13.529,13.716L12.031,11.944L3.431,1.554C3.103,1.082 3.079,0.935 3.172,0.713C3.287,0.446 3.552,0.272 3.842,0.272L3.842,0.272ZM18.183,1.842C17.941,1.828 17.703,1.916 17.528,2.084L11.832,8.242L13.526,10.074L18.835,3.56C19.16,3.127 19.314,2.9 19.16,2.531C18.994,2.133 18.614,1.865 18.183,1.842L18.183,1.842ZM10.528,14.124L11.846,15.538L6.06,21.667C5.942,21.824 5.76,21.92 5.564,21.927C5.256,21.932 4.975,21.746 4.858,21.461C4.746,21.192 4.894,20.774 5.102,20.552L5.107,20.547L5.112,20.541L10.528,14.124Z"
+            style="fill-rule:nonzero;stroke-width:0.5px;" />
+    </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+            
+        </div>
+    
+</div>
+					
+						<div class="rounded-2xl border border-primary border-[1.5px] overflow-hidden" data-djc-id-cHkRuYl="">
+    
+        <div class="float-right ml-3 mb-3 flex flex-col gap-0.5 items-end">
+            
+                <div class=" bg-primary  p-2 pl-2.5 text-white text-sm font-bold rounded-bl-2xl w-fit">ICALP 2025</div>
+            
+        </div>
+    
+    <h2 class="mx-3 mt-3 mb-0.5 text-md font-medium leading-tight">Cost Preserving Dependent Rounding for Allocation Problems</h2>
+    <p class="mx-3 mb-3 text-sm font-medium">Lars Rohwedder, Arman Rouhani, Leo Wennmann</p>
+    
+        <div class="mx-3 mb-3 flex flex-row flex-wrap items-center gap-2">
+            
+                
+                    <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2025.127" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cknwGYb="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-djc-id-cn7f45f="">
+    <path stroke-linecap="round" stroke-linejoin="round"
+        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+                
+                    <a href="https://arxiv.org/abs/2502.08267" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cklKxj8="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+
+
+<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-cBlvFS1="">
+    <g transform="matrix(1,0,0,1,1,1)">
+        <path
+            d="M3.842,0C3.442,0 3.078,0.24 2.92,0.608C2.767,0.977 2.876,1.235 3.214,1.719L10.133,10.079L9.11,11.185C8.738,11.583 8.739,12.211 9.113,12.608L10.343,13.921L4.903,20.365C4.623,20.664 4.45,21.188 4.606,21.564C4.766,21.951 5.146,22.203 5.565,22.199C5.833,22.192 6.086,22.068 6.254,21.859L12.037,15.733L19.527,23.738C19.704,23.922 19.955,24.018 20.211,23.997C20.6,23.991 20.949,23.747 21.088,23.383C21.246,23.007 21.071,22.633 20.782,22.243L13.73,13.901L14.794,12.771C15.141,12.405 15.145,11.825 14.803,11.455L4.634,0.464C4.634,0.464 4.26,0.01 3.866,0.001L3.842,0ZM3.842,0.272L3.859,0.272C4.077,0.277 4.346,0.544 4.423,0.636L4.428,0.642L4.433,0.647L14.602,11.638C14.848,11.904 14.845,12.32 14.595,12.583L13.529,13.716L12.031,11.944L3.431,1.554C3.103,1.082 3.079,0.935 3.172,0.713C3.287,0.446 3.552,0.272 3.842,0.272L3.842,0.272ZM18.183,1.842C17.941,1.828 17.703,1.916 17.528,2.084L11.832,8.242L13.526,10.074L18.835,3.56C19.16,3.127 19.314,2.9 19.16,2.531C18.994,2.133 18.614,1.865 18.183,1.842L18.183,1.842ZM10.528,14.124L11.846,15.538L6.06,21.667C5.942,21.824 5.76,21.92 5.564,21.927C5.256,21.932 4.975,21.746 4.858,21.461C4.746,21.192 4.894,20.774 5.102,20.552L5.107,20.547L5.112,20.541L10.528,14.124Z"
+            style="fill-rule:nonzero;stroke-width:0.5px;" />
+    </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+            
+        </div>
+    
+</div>
+					
+						<div class="rounded-2xl border border-primary border-[1.5px] overflow-hidden" data-djc-id-ctPA0z8="">
+    
+        <div class="float-right ml-3 mb-3 flex flex-col gap-0.5 items-end">
+            
+                <div class=" bg-primary  p-2 pl-2.5 text-white text-sm font-bold rounded-bl-2xl w-fit">SODA 2025</div>
+            
+        </div>
+    
+    <h2 class="mx-3 mt-3 mb-0.5 text-md font-medium leading-tight">Solving Polynomial Equations Over Finite Fields</h2>
+    <p class="mx-3 mb-3 text-sm font-medium">Holger Dell, Anselm Haak, Melvin Kallmayer, Leo Wennmann</p>
+    
+        <div class="mx-3 mb-3 flex flex-row flex-wrap items-center gap-2">
+            
+                
+                    <a href="https://epubs.siam.org/doi/abs/10.1137/1.9781611978322.90" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cippQoo="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-djc-id-cQFvsOz="">
+    <path stroke-linecap="round" stroke-linejoin="round"
+        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+                
+                    <a href="https://arxiv.org/abs/2410.20162" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-c97KPYm="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+
+
+<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-cC973DG="">
+    <g transform="matrix(1,0,0,1,1,1)">
+        <path
+            d="M3.842,0C3.442,0 3.078,0.24 2.92,0.608C2.767,0.977 2.876,1.235 3.214,1.719L10.133,10.079L9.11,11.185C8.738,11.583 8.739,12.211 9.113,12.608L10.343,13.921L4.903,20.365C4.623,20.664 4.45,21.188 4.606,21.564C4.766,21.951 5.146,22.203 5.565,22.199C5.833,22.192 6.086,22.068 6.254,21.859L12.037,15.733L19.527,23.738C19.704,23.922 19.955,24.018 20.211,23.997C20.6,23.991 20.949,23.747 21.088,23.383C21.246,23.007 21.071,22.633 20.782,22.243L13.73,13.901L14.794,12.771C15.141,12.405 15.145,11.825 14.803,11.455L4.634,0.464C4.634,0.464 4.26,0.01 3.866,0.001L3.842,0ZM3.842,0.272L3.859,0.272C4.077,0.277 4.346,0.544 4.423,0.636L4.428,0.642L4.433,0.647L14.602,11.638C14.848,11.904 14.845,12.32 14.595,12.583L13.529,13.716L12.031,11.944L3.431,1.554C3.103,1.082 3.079,0.935 3.172,0.713C3.287,0.446 3.552,0.272 3.842,0.272L3.842,0.272ZM18.183,1.842C17.941,1.828 17.703,1.916 17.528,2.084L11.832,8.242L13.526,10.074L18.835,3.56C19.16,3.127 19.314,2.9 19.16,2.531C18.994,2.133 18.614,1.865 18.183,1.842L18.183,1.842ZM10.528,14.124L11.846,15.538L6.06,21.667C5.942,21.824 5.76,21.92 5.564,21.927C5.256,21.932 4.975,21.746 4.858,21.461C4.746,21.192 4.894,20.774 5.102,20.552L5.107,20.547L5.112,20.541L10.528,14.124Z"
+            style="fill-rule:nonzero;stroke-width:0.5px;" />
+    </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+            
+        </div>
+    
+</div>
+					
+				
+					<div class="flex items-center gap-4 mb-5">
+						<span class="text-xs font-semibold tracking-widest text-primary uppercase">
+							2024
+						</span>
+					</div>
+					
+						<div class="rounded-2xl border border-primary border-[1.5px] overflow-hidden" data-djc-id-cs0T1z8="">
+    
+        <div class="float-right ml-3 mb-3 flex flex-col gap-0.5 items-end">
+            
+                <div class=" bg-primary  p-2 pl-2.5 text-white text-sm font-bold rounded-bl-2xl w-fit">ICALP 2024</div>
+            
+                <div class=" bg-secondary  p-2 pl-2.5 text-white text-sm font-bold rounded-bl-2xl w-fit">TheoretiCS 2025</div>
+            
+        </div>
+    
+    <h2 class="mx-3 mt-3 mb-0.5 text-md font-medium leading-tight">Minimizing Tardy Processing Time on a Single Machine in Near-Linear Time</h2>
+    <p class="mx-3 mb-3 text-sm font-medium">Nick Fischer, Leo Wennmann</p>
+    
+        <div class="mx-3 mb-3 flex flex-row flex-wrap items-center gap-2">
+            
+                
+                    <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2024.64" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-cOIf1JU="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-djc-id-c9uMa1s="">
+    <path stroke-linecap="round" stroke-linejoin="round"
+        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+                
+                    <a href="https://arxiv.org/abs/2402.13357" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         w-9 h-9
+        
+        
+            border border-[1.5px] border-primary
+             bg-white hover:bg-primary text-primary hover:text-white
+            
+        
+         cursor-pointer
+        " data-djc-id-c6DTKs2="">
+    
+        <span class="w-5 h-5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+
+
+<svg viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor"
+    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" data-djc-id-cr56ctx="">
+    <g transform="matrix(1,0,0,1,1,1)">
+        <path
+            d="M3.842,0C3.442,0 3.078,0.24 2.92,0.608C2.767,0.977 2.876,1.235 3.214,1.719L10.133,10.079L9.11,11.185C8.738,11.583 8.739,12.211 9.113,12.608L10.343,13.921L4.903,20.365C4.623,20.664 4.45,21.188 4.606,21.564C4.766,21.951 5.146,22.203 5.565,22.199C5.833,22.192 6.086,22.068 6.254,21.859L12.037,15.733L19.527,23.738C19.704,23.922 19.955,24.018 20.211,23.997C20.6,23.991 20.949,23.747 21.088,23.383C21.246,23.007 21.071,22.633 20.782,22.243L13.73,13.901L14.794,12.771C15.141,12.405 15.145,11.825 14.803,11.455L4.634,0.464C4.634,0.464 4.26,0.01 3.866,0.001L3.842,0ZM3.842,0.272L3.859,0.272C4.077,0.277 4.346,0.544 4.423,0.636L4.428,0.642L4.433,0.647L14.602,11.638C14.848,11.904 14.845,12.32 14.595,12.583L13.529,13.716L12.031,11.944L3.431,1.554C3.103,1.082 3.079,0.935 3.172,0.713C3.287,0.446 3.552,0.272 3.842,0.272L3.842,0.272ZM18.183,1.842C17.941,1.828 17.703,1.916 17.528,2.084L11.832,8.242L13.526,10.074L18.835,3.56C19.16,3.127 19.314,2.9 19.16,2.531C18.994,2.133 18.614,1.865 18.183,1.842L18.183,1.842ZM10.528,14.124L11.846,15.538L6.06,21.667C5.942,21.824 5.76,21.92 5.564,21.927C5.256,21.932 4.975,21.746 4.858,21.461C4.746,21.192 4.894,20.774 5.102,20.552L5.107,20.547L5.112,20.541L10.528,14.124Z"
+            style="fill-rule:nonzero;stroke-width:0.5px;" />
+    </g>
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    
+    
+</a>
+                
+            
+            
+                
+                    <a href="https://theoretics.episciences.org/16062" class="inline-flex items-center justify-center whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:pointer-events-none disabled:opacity-50 rounded-full text-xs font-semibold
+         px-2.5 h-9
+        
+        
+            border border-[1.5px] border-secondary
+             bg-secondary hover:bg-white text-white hover:text-secondary 
+            
+        
+         cursor-pointer
+        " data-djc-id-cneDoRJ="">
+    
+        <span class="w-5 h-5  mr-1.5 ">
+            <!-- https://heroicons.com -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-djc-id-cit1HYB="">
+    <path stroke-linecap="round" stroke-linejoin="round"
+        d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0" />
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+        </span>
+    
+    Special Issue Invitation
+</a>
+                
+            
+        </div>
+    
+</div>
+					
+				
+			</div>
+		
+</section>
+		</div>
+	</main>
+
+    
+		<footer class="bg-primary text-white">
+			<div class="max-w-3xl mx-auto px-6 py-6">
+				<p>Last updated: May 15, 2026</p>
+			</div>
+		</footer>
+	
+<script src="/static/django_components/django_components.min.js"></script></body>
+
 </html>
